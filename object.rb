@@ -1,40 +1,58 @@
 #実行 ruby object.rb
 
+class Todo
+
+  def initialize
+    @tasks = []
+  end
+  
+  def add(task)
+    @task = task
+    puts "#{@task}"
+  end
+
+  def info
+  
+  end
+
+  def delete(id:)
+    
+  end
+  
+end
+
+
 
 class Task
 
-  attr_accessor :id, :task, :the_details
+  attr_reader :id
 
-  def initialize(id, task, the_details)
-    @id = id
-    @task = task
-    @the_details = the_details
+  @@count = 0
+
+  def initialize(**params)
+    @id = @@count += 1
+    @name = params[:name]
+    @content = params[:content]
+  end
+
+  def info
+
   end
 
 end
 
-task1 = Task.new("id1","タスク1","詳細1")
-
-puts task1.id
-puts task1.task
-puts task1.the_details
 
 
+task1 = Task.new(name: "洗濯", content: "午前に干し終える")
+task2 = Task.new(name: "買物", content: "午後１時に行く")
+task3 = Task.new(name: "夕食", content: "午後５時に食べる")
+my_todo = Todo.new
+my_todo.add(task1)
+my_todo.add(task2)
+my_todo.add(task3)
+my_todo.info
+my_todo.delete(id: 1)
+my_todo.info
 
-class Todo
-
-  attr_accessor :add_to, :display, :delete
-
-  def initialize(add_to, display, delete)
-    @add_to = add_to
-    @display = display
-    @delete = delete
-  end
-
-end
-
-todo1 = Todo.new("追加1","表示1","削除1")
-
-puts todo1.add_to
-puts todo1.display
-puts todo1.delete
+todo = Todo.new
+todo.info
